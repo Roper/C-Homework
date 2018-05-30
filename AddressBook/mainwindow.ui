@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>603</width>
+    <height>527</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTableView" name="tableView"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>603</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_O">
+    <property name="title">
+     <string>Menu(&amp;M)</string>
+    </property>
+    <widget class="QMenu" name="menuList_By_L">
+     <property name="title">
+      <string>List By...(&amp;L)</string>
+     </property>
+     <addaction name="actionRelationship"/>
+     <addaction name="actionBirthday"/>
+    </widget>
+    <widget class="QMenu" name="menuSort_S">
+     <property name="title">
+      <string>Sort By...(&amp;S)</string>
+     </property>
+     <addaction name="actionName_N"/>
+     <addaction name="actionBirthday_B"/>
+    </widget>
+    <addaction name="actionAdd_A"/>
+    <addaction name="actionDelete_D"/>
+    <addaction name="separator"/>
+    <addaction name="actionFind_F"/>
+    <addaction name="menuSort_S"/>
+    <addaction name="menuList_By_L"/>
+    <addaction name="separator"/>
+    <addaction name="actionBirthday_B_2"/>
+    <addaction name="actionBirthdayEmail_E"/>
+   </widget>
+   <addaction name="menu_O"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionAdd_A">
+   <property name="text">
+    <string>Add(&amp;A)</string>
+   </property>
+  </action>
+  <action name="actionFind_F">
+   <property name="text">
+    <string>Find(&amp;F)</string>
+   </property>
+  </action>
+  <action name="actionRelationship">
+   <property name="text">
+    <string>Relationship</string>
+   </property>
+  </action>
+  <action name="actionBirthday">
+   <property name="text">
+    <string>Birthday</string>
+   </property>
+  </action>
+  <action name="actionDelete_D">
+   <property name="text">
+    <string>Delete(&amp;D)</string>
+   </property>
+  </action>
+  <action name="actionName_N">
+   <property name="text">
+    <string>Name</string>
+   </property>
+  </action>
+  <action name="actionBirthday_B">
+   <property name="text">
+    <string>Birthday</string>
+   </property>
+  </action>
+  <action name="actionBirthday_B_2">
+   <property name="text">
+    <string>Birthday(&amp;B)</string>
+   </property>
+  </action>
+  <action name="actionBirthdayEmail_E">
+   <property name="text">
+    <string>BirthdayEmail(&amp;E)</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

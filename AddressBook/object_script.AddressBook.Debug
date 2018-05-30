@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\addpeopledialog.o
+./debug\people.o
+./debug\finddialog.o
+./debug\listbyrelationdialog.o
+./debug\listbybirthdaydialog.o
+./debug\birthdayemaildialog.o
+./debug\moc_mainwindow.o
+./debug\moc_addpeopledialog.o
+./debug\moc_finddialog.o
+./debug\moc_listbyrelationdialog.o
+./debug\moc_listbybirthdaydialog.o
+./debug\moc_birthdayemaildialog.o
+);
