@@ -240,6 +240,8 @@ debug/moc_mainwindow.cpp: ../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QMainWind
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/QModelIndex \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		mainwindow.h \
 		debug/moc_predefs.h \
 		../../Qt5.8/5.8/mingw53_32/bin/moc.exe
@@ -926,6 +928,8 @@ debug/main.o: main.cpp mainwindow.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/QModelIndex \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		addpeopledialog.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QDialog \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qdialog.h \
@@ -1045,6 +1049,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/QModelIndex \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		ui_mainwindow.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtCore/QVariant \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QAction \
@@ -1069,7 +1075,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../../Qt5.8/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
@@ -1886,7 +1891,52 @@ debug/birthdayemaildialog.o: birthdayemaildialog.cpp birthdayemaildialog.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_birthdayemaildialog.h
+		ui_birthdayemaildialog.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/QVariant \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QAction \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qaction.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qicon.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QApplication \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QGridLayout \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtextoption.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../Qt5.8/5.8/mingw53_32/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\birthdayemaildialog.o birthdayemaildialog.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QModelIndex>
+#include <QSqlQueryModel>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +22,7 @@ private slots:
     void findByName(QString name);
     void findByRelation(QString name);
     void findByMonth(int month);
+    void showDataChange(QModelIndex topLeft, QModelIndex bottomRight);
 
     void on_actionAdd_A_triggered();
     void on_actionDelete_D_triggered();
@@ -35,6 +38,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QSqlQueryModel *model;
 };
 
 #endif // MAINWINDOW_H

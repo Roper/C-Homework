@@ -57,6 +57,7 @@
      <addaction name="actionBirthday_B"/>
     </widget>
     <addaction name="actionAdd_A"/>
+    <addaction name="actionEdit_E"/>
     <addaction name="actionDelete_D"/>
     <addaction name="separator"/>
     <addaction name="actionFind_F"/>
@@ -122,6 +123,11 @@
   <action name="actionBirthdayEmail_E">
    <property name="text">
     <string>BirthdayEmail(&amp;E)</string>
+   </property>
+  </action>
+  <action name="actionEdit_E">
+   <property name="text">
+    <string>Edit(&amp;E)</string>
    </property>
   </action>
  </widget>

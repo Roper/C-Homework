@@ -37,6 +37,7 @@ public:
     QAction *actionBirthday_B;
     QAction *actionBirthday_B_2;
     QAction *actionBirthdayEmail_E;
+    QAction *actionEdit_E;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableView *tableView;
@@ -71,6 +72,8 @@ public:
         actionBirthday_B_2->setObjectName(QStringLiteral("actionBirthday_B_2"));
         actionBirthdayEmail_E = new QAction(MainWindow);
         actionBirthdayEmail_E->setObjectName(QStringLiteral("actionBirthdayEmail_E"));
+        actionEdit_E = new QAction(MainWindow);
+        actionEdit_E->setObjectName(QStringLiteral("actionEdit_E"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -105,6 +108,7 @@ public:
 
         menuBar->addAction(menu_O->menuAction());
         menu_O->addAction(actionAdd_A);
+        menu_O->addAction(actionEdit_E);
         menu_O->addAction(actionDelete_D);
         menu_O->addSeparator();
         menu_O->addAction(actionFind_F);
@@ -135,6 +139,7 @@ public:
         actionBirthday_B->setText(QApplication::translate("MainWindow", "Birthday", Q_NULLPTR));
         actionBirthday_B_2->setText(QApplication::translate("MainWindow", "Birthday(&B)", Q_NULLPTR));
         actionBirthdayEmail_E->setText(QApplication::translate("MainWindow", "BirthdayEmail(&E)", Q_NULLPTR));
+        actionEdit_E->setText(QApplication::translate("MainWindow", "Edit(&E)", Q_NULLPTR));
         menu_O->setTitle(QApplication::translate("MainWindow", "Menu(&M)", Q_NULLPTR));
         menuList_By_L->setTitle(QApplication::translate("MainWindow", "List By...(&L)", Q_NULLPTR));
         menuSort_S->setTitle(QApplication::translate("MainWindow", "Sort By...(&S)", Q_NULLPTR));

@@ -37,6 +37,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::showDataChange(QModelIndex topLeft, QModelIndex bottomRight)
+{
+    qDebug() << topLeft.column() << topLeft.row();
+    qDebug() << bottomRight.column() << bottomRight.row();
+}
+
 void MainWindow::fresh()
 {
     QSqlTableModel *model = new QSqlTableModel;
@@ -107,10 +113,8 @@ void MainWindow::on_actionFind_F_triggered()
 void MainWindow::on_actionBirthday_B_triggered()
 {
 
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(8, Qt::AscendingOrder);
-    model->select();
+    QSqlQueryModel *model = new QSqlQueryModel;
+    model->setQuery("select * from people order by year*10000+month*100+day");
 
     ui->tableView->setModel(model);
 }
