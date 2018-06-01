@@ -7,10 +7,12 @@ INPUT(
 ./release\listbyrelationdialog.o
 ./release\listbybirthdaydialog.o
 ./release\birthdayemaildialog.o
+./release\editdialog.o
 ./release\moc_mainwindow.o
 ./release\moc_addpeopledialog.o
 ./release\moc_finddialog.o
 ./release\moc_listbyrelationdialog.o
 ./release\moc_listbybirthdaydialog.o
 ./release\moc_birthdayemaildialog.o
+./release\moc_editdialog.o
 );

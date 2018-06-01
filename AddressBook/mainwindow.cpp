@@ -6,6 +6,7 @@
 #include "listbybirthdaydialog.h"
 #include "birthdayemaildialog.h"
 #include "finddialog.h"
+#include "editdialog.h"
 #include <QMessageBox>
 #include <cstdlib>
 #include <QSqlTableModel>
@@ -24,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
         exit(1);
     }
 
+    model = new QSqlQueryModel;
+    queryString = "select * from people";
     this->fresh();
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -45,45 +48,30 @@ void MainWindow::showDataChange(QModelIndex topLeft, QModelIndex bottomRight)
 
 void MainWindow::fresh()
 {
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(1, Qt::AscendingOrder);
-    model->select();
+    model->setQuery(queryString);
 
     ui->tableView->setModel(model);
+}
+
+void MainWindow::queryWithCondition(QString condition)
+{
+    queryString = "select * from people " + condition;
+    fresh();
 }
 
 void MainWindow::findByName(QString name)
 {
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(1, Qt::AscendingOrder);
-    model->setFilter(QString("name = '%1'").arg(name));
-    model->select();
-
-    ui->tableView->setModel(model);
+    queryWithCondition(QString("where name = '%1'").arg(name));
 }
 
 void MainWindow::findByRelation(QString relation)
 {
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(1, Qt::AscendingOrder);
-    model->setFilter(QString("relation = '%1'").arg(relation));
-    model->select();
-
-    ui->tableView->setModel(model);
+    queryWithCondition(QString("where relation = '%1'").arg(relation));
 }
 
 void MainWindow::findByMonth(int month)
 {
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(1, Qt::AscendingOrder);
-    model->setFilter(QString("month = %1").arg(month));
-    model->select();
-
-    ui->tableView->setModel(model);
+    queryWithCondition(QString("where month = %1").arg(month));
 }
 
 void MainWindow::on_actionAdd_A_triggered()
@@ -112,22 +100,12 @@ void MainWindow::on_actionFind_F_triggered()
 
 void MainWindow::on_actionBirthday_B_triggered()
 {
-
-    QSqlQueryModel *model = new QSqlQueryModel;
-    model->setQuery("select * from people order by year*10000+month*100+day");
-
-    ui->tableView->setModel(model);
+    queryWithCondition("order by year*10000+month*100+day");
 }
 
 void MainWindow::on_actionName_N_triggered()
 {
-
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(0, Qt::AscendingOrder);
-    model->select();
-
-    ui->tableView->setModel(model);
+    queryWithCondition("order by 1");
 }
 
 void MainWindow::on_actionRelationship_triggered()
@@ -158,13 +136,7 @@ void MainWindow::on_actionBirthday_B_2_triggered()
     int year5 = later.year();
     int tmp5 = year5 * 10000 + month5 * 100 + day5;
 
-    QSqlTableModel *model = new QSqlTableModel;
-    model->setTable("people");
-    model->setSort(1, Qt::AscendingOrder);
-    model->setFilter(QString("sortAnchor >= %1 and sortAnchor <= %2").arg(tmp).arg(tmp5));
-    model->select();
-
-    ui->tableView->setModel(model);
+    queryWithCondition(QString("where sortAnchor >= %1 and sortAnchor <= %2").arg(tmp).arg(tmp5));
 }
 
 void MainWindow::on_actionBirthdayEmail_E_triggered()
@@ -174,5 +146,22 @@ void MainWindow::on_actionBirthdayEmail_E_triggered()
     QString name = ui->tableView->model()->data(index).toString();
 
     BirthdayEmailDialog *dlg = new BirthdayEmailDialog(this, name);
+    dlg->show();
+}
+
+void MainWindow::on_actionEdit_E_triggered()
+{
+    int curRow = ui->tableView->currentIndex().row();
+    QString name = model->index(curRow,0).data().toString();
+    int year = model->index(curRow, 1).data().toInt();
+    int month = model->index(curRow, 2).data().toInt();
+    int day = model->index(curRow, 3).data().toInt();
+    QString relation = model->index(curRow, 4).data().toString();
+    QString tel = model->index(curRow, 5).data().toString();
+    QString emailAddr = model->index(curRow, 6).data().toString();
+    QString special = model->index(curRow, 7).data().toString();
+
+    EditDialog *dlg = new EditDialog(this, name, year, month, day, relation, tel, emailAddr, special);
+    connect(dlg, SIGNAL(accepted()), this, SLOT(fresh()));
     dlg->show();
 }

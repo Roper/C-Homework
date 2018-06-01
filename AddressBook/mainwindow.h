@@ -16,9 +16,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void fresh();
+    void queryWithCondition(QString condition);
 
 private slots:
+    void fresh();
     void findByName(QString name);
     void findByRelation(QString name);
     void findByMonth(int month);
@@ -36,9 +37,12 @@ private slots:
 
     void on_actionBirthdayEmail_E_triggered();
 
+    void on_actionEdit_E_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlQueryModel *model;
+    QString queryString;
 };
 
 #endif // MAINWINDOW_H

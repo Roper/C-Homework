@@ -36,8 +36,7 @@ void AddPeopleDialog::on_okPushButton_clicked()
                    ui->relationBox->currentText().trimmed(),
                    ui->phoneEdit->text().trimmed(),
                    ui->emailEdit->text().trimmed(),
-                   ui->specialEdit->text().trimmed(),
-                   year * 10000 + month * 100 + day);
+                   ui->specialEdit->text().trimmed());
         accept();
     }
 }
