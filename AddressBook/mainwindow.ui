@@ -79,15 +79,26 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionHome_H"/>
+   <addaction name="actionAdd_A"/>
+   <addaction name="actionEdit_E"/>
+   <addaction name="actionDelete_D"/>
+   <addaction name="actionFind_F"/>
   </widget>
   <action name="actionAdd_A">
    <property name="text">
     <string>Add(&amp;A)</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+A</string>
+   </property>
   </action>
   <action name="actionFind_F">
    <property name="text">
     <string>Find(&amp;F)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actionRelationship">
@@ -103,6 +114,9 @@
   <action name="actionDelete_D">
    <property name="text">
     <string>Delete(&amp;D)</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
   <action name="actionName_N">
@@ -128,6 +142,17 @@
   <action name="actionEdit_E">
    <property name="text">
     <string>Edit(&amp;E)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+E</string>
+   </property>
+  </action>
+  <action name="actionHome_H">
+   <property name="text">
+    <string>Home(&amp;H)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
    </property>
   </action>
  </widget>

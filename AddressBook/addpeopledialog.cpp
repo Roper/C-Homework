@@ -5,13 +5,14 @@
 #include <QDialog>
 #include <QMessageBox>
 
-AddPeopleDialog::AddPeopleDialog(QWidget *parent) :
+AddPeopleDialog::AddPeopleDialog(QWidget *parent=0, int count=0) :
     QDialog(parent),
     ui(new Ui::AddPeopleDialog)
 {
     ui->setupUi(this);
     this->setFixedSize(this->width(), this->height());
 
+    AddPeopleDialog::count = count;
     ui->relationBox->addItems(People::relations);
 }
 
@@ -26,7 +27,8 @@ void AddPeopleDialog::on_okPushButton_clicked()
         QMessageBox::warning(this, "WARNING", "性名不能为空", QMessageBox::Yes);
     else
     {
-        insertToDb(ui->nameEdit->text().trimmed(),
+        insertToDb(count+1,
+                   ui->nameEdit->text().trimmed(),
                    ui->birthdayDateEdit->date().year(),
                    ui->birthdayDateEdit->date().month(),
                    ui->birthdayDateEdit->date().day(),

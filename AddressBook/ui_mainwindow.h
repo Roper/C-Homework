@@ -38,6 +38,7 @@ public:
     QAction *actionBirthday_B_2;
     QAction *actionBirthdayEmail_E;
     QAction *actionEdit_E;
+    QAction *actionHome_H;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableView *tableView;
@@ -74,6 +75,8 @@ public:
         actionBirthdayEmail_E->setObjectName(QStringLiteral("actionBirthdayEmail_E"));
         actionEdit_E = new QAction(MainWindow);
         actionEdit_E->setObjectName(QStringLiteral("actionEdit_E"));
+        actionHome_H = new QAction(MainWindow);
+        actionHome_H->setObjectName(QStringLiteral("actionHome_H"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -121,6 +124,11 @@ public:
         menuList_By_L->addAction(actionBirthday);
         menuSort_S->addAction(actionName_N);
         menuSort_S->addAction(actionBirthday_B);
+        toolBar->addAction(actionHome_H);
+        toolBar->addAction(actionAdd_A);
+        toolBar->addAction(actionEdit_E);
+        toolBar->addAction(actionDelete_D);
+        toolBar->addAction(actionFind_F);
 
         retranslateUi(MainWindow);
 
@@ -131,15 +139,21 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         actionAdd_A->setText(QApplication::translate("MainWindow", "Add(&A)", Q_NULLPTR));
+        actionAdd_A->setShortcut(QApplication::translate("MainWindow", "Alt+A", Q_NULLPTR));
         actionFind_F->setText(QApplication::translate("MainWindow", "Find(&F)", Q_NULLPTR));
+        actionFind_F->setShortcut(QApplication::translate("MainWindow", "Ctrl+F", Q_NULLPTR));
         actionRelationship->setText(QApplication::translate("MainWindow", "Relationship", Q_NULLPTR));
         actionBirthday->setText(QApplication::translate("MainWindow", "Birthday", Q_NULLPTR));
         actionDelete_D->setText(QApplication::translate("MainWindow", "Delete(&D)", Q_NULLPTR));
+        actionDelete_D->setShortcut(QApplication::translate("MainWindow", "Del", Q_NULLPTR));
         actionName_N->setText(QApplication::translate("MainWindow", "Name", Q_NULLPTR));
         actionBirthday_B->setText(QApplication::translate("MainWindow", "Birthday", Q_NULLPTR));
         actionBirthday_B_2->setText(QApplication::translate("MainWindow", "Birthday(&B)", Q_NULLPTR));
         actionBirthdayEmail_E->setText(QApplication::translate("MainWindow", "BirthdayEmail(&E)", Q_NULLPTR));
         actionEdit_E->setText(QApplication::translate("MainWindow", "Edit(&E)", Q_NULLPTR));
+        actionEdit_E->setShortcut(QApplication::translate("MainWindow", "Alt+E", Q_NULLPTR));
+        actionHome_H->setText(QApplication::translate("MainWindow", "Home(&H)", Q_NULLPTR));
+        actionHome_H->setShortcut(QApplication::translate("MainWindow", "Ctrl+H", Q_NULLPTR));
         menu_O->setTitle(QApplication::translate("MainWindow", "Menu(&M)", Q_NULLPTR));
         menuList_By_L->setTitle(QApplication::translate("MainWindow", "List By...(&L)", Q_NULLPTR));
         menuSort_S->setTitle(QApplication::translate("MainWindow", "Sort By...(&S)", Q_NULLPTR));

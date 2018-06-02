@@ -12,7 +12,7 @@ class AddPeopleDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddPeopleDialog(QWidget *parent = 0);
+    explicit AddPeopleDialog(QWidget *parent, int count);
     ~AddPeopleDialog();
 
 private slots:
@@ -22,6 +22,7 @@ private slots:
 
 private:
     Ui::AddPeopleDialog *ui;
+    int count;
 };
 
 #endif // ADDPEOPLEDIALOG_H

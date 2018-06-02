@@ -12,7 +12,7 @@ class EditDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditDialog(QWidget *parent, QString name, int year, int month, int day,
+    explicit EditDialog(QWidget *parent, int id, QString name, int year, int month, int day,
                         QString relation, QString tel, QString emailAddr, QString special);
     //explicit EditDialog(QWidget *parent = 0, QString name = "", int year = 0, int month = 0, int day = 0,
     //                    QString relation = "", QString tel = "", QString emailAddr = "", QString special = "");
@@ -29,6 +29,7 @@ private slots:
 
 private:
     Ui::EditDialog *ui;
+    int id;
 };
 
 #endif // EDITDIALOG_H

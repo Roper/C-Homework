@@ -9,7 +9,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 
-EditDialog::EditDialog(QWidget *parent = 0, QString name = "", int year = 0, int month = 0, int day = 0,
+EditDialog::EditDialog(QWidget *parent = 0, int id = 0, QString name = "", int year = 0, int month = 0, int day = 0,
                        QString relation = "", QString tel = "", QString emailAddr = "", QString special = "") :
     QDialog(parent),
     ui(new Ui::EditDialog)
@@ -18,6 +18,7 @@ EditDialog::EditDialog(QWidget *parent = 0, QString name = "", int year = 0, int
 
     this->setFixedSize(this->width(), this->height());
 
+    EditDialog::id = id;
     ui->nameLineEdit->setEnabled(false);
     ui->birthdayLineEdit->setEnabled(false);
     ui->nameLineEdit->setText(name);
@@ -61,19 +62,18 @@ void EditDialog::on_relationComboBox_currentIndexChanged(int index)
 
 void EditDialog::on_okPushButton_clicked()
 {
-    QString name = ui->nameLineEdit->text();
     QString relation = ui->relationComboBox->currentText();
     QString tel = ui->telLineEdit->text();
     QString email = ui->emailLineEdit->text();
     QString special = ui->specialLineEdit->text();
 
     QSqlQuery *query = new QSqlQuery;
-    query->prepare("update people set relation=:relation, tel=:tel, emailAddr=:emailAddr, special=:special where name=:name");
-    query->bindValue(0, relation);
-    query->bindValue(1, tel);
-    query->bindValue(2, email);
-    query->bindValue(3, special);
-    query->bindValue(4, name);
+    query->prepare("update people set relation=:relation, tel=:tel, emailAddr=:emailAddr, special=:special where id=:id");
+    query->bindValue(":relation", relation);
+    query->bindValue(":tel", tel);
+    query->bindValue(":emailAddr", email);
+    query->bindValue(":special", special);
+    query->bindValue(":id", id);
     query->exec();
 
     accept();

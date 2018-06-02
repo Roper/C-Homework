@@ -18,6 +18,9 @@ public:
     ~MainWindow();
     void queryWithCondition(QString condition);
 
+protected:
+    void closeEvent(QCloseEvent *event);
+
 private slots:
     void fresh();
     void findByName(QString name);
@@ -39,10 +42,14 @@ private slots:
 
     void on_actionEdit_E_triggered();
 
+    void on_actionHome_H_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlQueryModel *model;
     QString queryString;
+    int count;
+    int showSpecial;
 };
 
 #endif // MAINWINDOW_H
