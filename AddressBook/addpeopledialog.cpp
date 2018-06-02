@@ -11,6 +11,7 @@ AddPeopleDialog::AddPeopleDialog(QWidget *parent=0, int count=0) :
 {
     ui->setupUi(this);
     this->setFixedSize(this->width(), this->height());
+    this->setWindowTitle("Add a Person to Your Address Book");
 
     AddPeopleDialog::count = count;
     ui->relationBox->addItems(People::relations);

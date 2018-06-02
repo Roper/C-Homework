@@ -36,10 +36,10 @@ public:
     {
         if (findDialog->objectName().isEmpty())
             findDialog->setObjectName(QStringLiteral("findDialog"));
-        findDialog->resize(400, 300);
+        findDialog->resize(620, 143);
         splitter = new QSplitter(findDialog);
         splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(190, 250, 161, 23));
+        splitter->setGeometry(QRect(430, 100, 161, 23));
         splitter->setOrientation(Qt::Horizontal);
         okPushButton = new QPushButton(splitter);
         okPushButton->setObjectName(QStringLiteral("okPushButton"));
@@ -49,7 +49,7 @@ public:
         splitter->addWidget(canclePushButton);
         splitter_2 = new QSplitter(findDialog);
         splitter_2->setObjectName(QStringLiteral("splitter_2"));
-        splitter_2->setGeometry(QRect(60, 120, 261, 20));
+        splitter_2->setGeometry(QRect(60, 50, 511, 20));
         splitter_2->setOrientation(Qt::Horizontal);
         nameLabel = new QLabel(splitter_2);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));

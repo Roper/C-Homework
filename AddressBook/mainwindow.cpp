@@ -5,7 +5,7 @@
 #include "editdialog.h"
 #include "ui_mainwindow.h"
 #include "addpeopledialog.h"
-#include "birthdayemaildialog.h"
+#include "usernameinputdialog.h"
 #include "listbyrelationdialog.h"
 #include "listbybirthdaydialog.h"
 #include <cstdlib>
@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Address Book");
+
     if(!checkConnection())
     {
         QMessageBox::warning(this, "ERROR", "CAN NOT OPEN DATABASE", QMessageBox::Yes);
@@ -32,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     count = query->value(1).toInt();
     showSpecial = query->value(2).toInt();
     queryString = query->value(3).toString();
+    userName = query->value(4).toString();
 
     model = new QSqlQueryModel;
     this->fresh();
@@ -41,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->setColumnHidden(0, true);
     ui->tableView->setColumnHidden(9, true);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
-
+    connect(ui->tableView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(on_actionEdit_E_triggered()));
 }
 
 MainWindow::~MainWindow()
@@ -94,11 +97,20 @@ void MainWindow::findByMonth(int month)
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     QSqlQuery *query = new QSqlQuery;
-    query->prepare("update status set count = ?, showSpecial = ?, lastQuery = ? where id = 0");
+    query->prepare("update status set count = ?, showSpecial = ?, lastQuery = ?, username = ? where id = 0");
     query->bindValue(0, count);
     query->bindValue(1, showSpecial);
     query->bindValue(2, queryString);
+    query->bindValue(3, userName);
     query->exec();
+}
+
+void MainWindow::changUsername(QString name)
+{
+    if(name.isEmpty())
+        userName = "匿名";
+    else
+        userName = name;
 }
 
 void MainWindow::on_actionAdd_A_triggered()
@@ -124,7 +136,7 @@ void MainWindow::on_actionFind_F_triggered()
 {
     findDialog *dlg = new findDialog(this);
     connect(dlg, SIGNAL(sendData(QString)), this, SLOT(findByName(QString)));
-    dlg->show();
+    dlg->exec();
 }
 
 
@@ -142,14 +154,14 @@ void MainWindow::on_actionRelationship_triggered()
 {
     ListByRelationDialog *dlg = new ListByRelationDialog(this);
     connect(dlg, SIGNAL(sendData(QString)), this, SLOT(findByRelation(QString)));
-    dlg->show();
+    dlg->exec();
 }
 
 void MainWindow::on_actionBirthday_triggered()
 {
     ListByBirthdayDialog *dlg = new ListByBirthdayDialog(this);
     connect(dlg, SIGNAL(sendData(int)), this, SLOT(findByMonth(int)));
-    dlg->show();
+    dlg->exec();
 }
 
 void MainWindow::on_actionBirthday_B_2_triggered()
@@ -169,16 +181,6 @@ void MainWindow::on_actionBirthday_B_2_triggered()
     queryWithCondition(QString("where year*10000+month*100+day >= %1 and year*10000+month*100+day <= %2").arg(tmp).arg(tmp5));
 }
 
-void MainWindow::on_actionBirthdayEmail_E_triggered()
-{
-    int curRow = ui->tableView->currentIndex().row();
-    QModelIndex index = ui->tableView->model()->index(curRow, 0);
-    QString name = ui->tableView->model()->data(index).toString();
-
-    BirthdayEmailDialog *dlg = new BirthdayEmailDialog(this, name);
-    dlg->show();
-}
-
 void MainWindow::on_actionEdit_E_triggered()
 {
     int curRow = ui->tableView->currentIndex().row();
@@ -192,7 +194,9 @@ void MainWindow::on_actionEdit_E_triggered()
     QString emailAddr = model->index(curRow, 7).data().toString();
     QString special = model->index(curRow, 8).data().toString();
 
-    EditDialog *dlg = new EditDialog(this, id, name, year, month, day, relation, tel, emailAddr, special);
+    if(userName.isEmpty())
+        on_actionChange_Username_triggered();
+    EditDialog *dlg = new EditDialog(this, id, name, year, month, day, relation, tel, emailAddr, special, userName);
     connect(dlg, SIGNAL(accepted()), this, SLOT(fresh()));
     dlg->show();
 }
@@ -202,4 +206,11 @@ void MainWindow::on_actionHome_H_triggered()
     queryString = "select * from people";
     showSpecial = -1;
     fresh();
+}
+
+void MainWindow::on_actionChange_Username_triggered()
+{
+    UsernameInputDialog *dlg = new UsernameInputDialog(this);
+    connect(dlg, SIGNAL(sendData(QString)), this, SLOT(changUsername(QString)));
+    dlg->exec();
 }

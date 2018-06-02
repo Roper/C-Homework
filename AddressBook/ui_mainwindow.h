@@ -39,6 +39,7 @@ public:
     QAction *actionBirthdayEmail_E;
     QAction *actionEdit_E;
     QAction *actionHome_H;
+    QAction *actionChange_Username;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTableView *tableView;
@@ -77,6 +78,8 @@ public:
         actionEdit_E->setObjectName(QStringLiteral("actionEdit_E"));
         actionHome_H = new QAction(MainWindow);
         actionHome_H->setObjectName(QStringLiteral("actionHome_H"));
+        actionChange_Username = new QAction(MainWindow);
+        actionChange_Username->setObjectName(QStringLiteral("actionChange_Username"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -119,7 +122,7 @@ public:
         menu_O->addAction(menuList_By_L->menuAction());
         menu_O->addSeparator();
         menu_O->addAction(actionBirthday_B_2);
-        menu_O->addAction(actionBirthdayEmail_E);
+        menu_O->addAction(actionChange_Username);
         menuList_By_L->addAction(actionRelationship);
         menuList_By_L->addAction(actionBirthday);
         menuSort_S->addAction(actionName_N);
@@ -154,6 +157,7 @@ public:
         actionEdit_E->setShortcut(QApplication::translate("MainWindow", "Alt+E", Q_NULLPTR));
         actionHome_H->setText(QApplication::translate("MainWindow", "Home(&H)", Q_NULLPTR));
         actionHome_H->setShortcut(QApplication::translate("MainWindow", "Ctrl+H", Q_NULLPTR));
+        actionChange_Username->setText(QApplication::translate("MainWindow", "Change Username", Q_NULLPTR));
         menu_O->setTitle(QApplication::translate("MainWindow", "Menu(&M)", Q_NULLPTR));
         menuList_By_L->setTitle(QApplication::translate("MainWindow", "List By...(&L)", Q_NULLPTR));
         menuSort_S->setTitle(QApplication::translate("MainWindow", "Sort By...(&S)", Q_NULLPTR));

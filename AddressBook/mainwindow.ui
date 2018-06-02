@@ -65,7 +65,7 @@
     <addaction name="menuList_By_L"/>
     <addaction name="separator"/>
     <addaction name="actionBirthday_B_2"/>
-    <addaction name="actionBirthdayEmail_E"/>
+    <addaction name="actionChange_Username"/>
    </widget>
    <addaction name="menu_O"/>
   </widget>
@@ -153,6 +153,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionChange_Username">
+   <property name="text">
+    <string>Change Username</string>
    </property>
   </action>
  </widget>

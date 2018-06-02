@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[22];
-    char stringdata0[416];
+    QByteArrayData data[20];
+    char stringdata0[395];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,26 +39,23 @@ QT_MOC_LITERAL(4, 29, 4), // "name"
 QT_MOC_LITERAL(5, 34, 14), // "findByRelation"
 QT_MOC_LITERAL(6, 49, 11), // "findByMonth"
 QT_MOC_LITERAL(7, 61, 5), // "month"
-QT_MOC_LITERAL(8, 67, 14), // "showDataChange"
-QT_MOC_LITERAL(9, 82, 7), // "topLeft"
-QT_MOC_LITERAL(10, 90, 11), // "bottomRight"
-QT_MOC_LITERAL(11, 102, 24), // "on_actionAdd_A_triggered"
-QT_MOC_LITERAL(12, 127, 27), // "on_actionDelete_D_triggered"
-QT_MOC_LITERAL(13, 155, 25), // "on_actionFind_F_triggered"
-QT_MOC_LITERAL(14, 181, 29), // "on_actionBirthday_B_triggered"
-QT_MOC_LITERAL(15, 211, 25), // "on_actionName_N_triggered"
-QT_MOC_LITERAL(16, 237, 31), // "on_actionRelationship_triggered"
-QT_MOC_LITERAL(17, 269, 27), // "on_actionBirthday_triggered"
-QT_MOC_LITERAL(18, 297, 31), // "on_actionBirthday_B_2_triggered"
-QT_MOC_LITERAL(19, 329, 34), // "on_actionBirthdayEmail_E_trig..."
-QT_MOC_LITERAL(20, 364, 25), // "on_actionEdit_E_triggered"
-QT_MOC_LITERAL(21, 390, 25) // "on_actionHome_H_triggered"
+QT_MOC_LITERAL(8, 67, 13), // "changUsername"
+QT_MOC_LITERAL(9, 81, 24), // "on_actionAdd_A_triggered"
+QT_MOC_LITERAL(10, 106, 27), // "on_actionDelete_D_triggered"
+QT_MOC_LITERAL(11, 134, 25), // "on_actionFind_F_triggered"
+QT_MOC_LITERAL(12, 160, 29), // "on_actionBirthday_B_triggered"
+QT_MOC_LITERAL(13, 190, 25), // "on_actionName_N_triggered"
+QT_MOC_LITERAL(14, 216, 31), // "on_actionRelationship_triggered"
+QT_MOC_LITERAL(15, 248, 27), // "on_actionBirthday_triggered"
+QT_MOC_LITERAL(16, 276, 31), // "on_actionBirthday_B_2_triggered"
+QT_MOC_LITERAL(17, 308, 25), // "on_actionEdit_E_triggered"
+QT_MOC_LITERAL(18, 334, 25), // "on_actionHome_H_triggered"
+QT_MOC_LITERAL(19, 360, 34) // "on_actionChange_Username_trig..."
 
     },
     "MainWindow\0fresh\0\0findByName\0name\0"
     "findByRelation\0findByMonth\0month\0"
-    "showDataChange\0topLeft\0bottomRight\0"
-    "on_actionAdd_A_triggered\0"
+    "changUsername\0on_actionAdd_A_triggered\0"
     "on_actionDelete_D_triggered\0"
     "on_actionFind_F_triggered\0"
     "on_actionBirthday_B_triggered\0"
@@ -66,9 +63,9 @@ QT_MOC_LITERAL(21, 390, 25) // "on_actionHome_H_triggered"
     "on_actionRelationship_triggered\0"
     "on_actionBirthday_triggered\0"
     "on_actionBirthday_B_2_triggered\0"
-    "on_actionBirthdayEmail_E_triggered\0"
     "on_actionEdit_E_triggered\0"
-    "on_actionHome_H_triggered"
+    "on_actionHome_H_triggered\0"
+    "on_actionChange_Username_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,7 +87,9 @@ static const uint qt_meta_data_MainWindow[] = {
        3,    1,   95,    2, 0x08 /* Private */,
        5,    1,   98,    2, 0x08 /* Private */,
        6,    1,  101,    2, 0x08 /* Private */,
-       8,    2,  104,    2, 0x08 /* Private */,
+       8,    1,  104,    2, 0x08 /* Private */,
+       9,    0,  107,    2, 0x08 /* Private */,
+      10,    0,  108,    2, 0x08 /* Private */,
       11,    0,  109,    2, 0x08 /* Private */,
       12,    0,  110,    2, 0x08 /* Private */,
       13,    0,  111,    2, 0x08 /* Private */,
@@ -100,15 +99,13 @@ static const uint qt_meta_data_MainWindow[] = {
       17,    0,  115,    2, 0x08 /* Private */,
       18,    0,  116,    2, 0x08 /* Private */,
       19,    0,  117,    2, 0x08 /* Private */,
-      20,    0,  118,    2, 0x08 /* Private */,
-      21,    0,  119,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void, QMetaType::Int,    7,
-    QMetaType::Void, QMetaType::QModelIndex, QMetaType::QModelIndex,    9,   10,
+    QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -134,7 +131,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->findByName((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 2: _t->findByRelation((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 3: _t->findByMonth((*reinterpret_cast< int(*)>(_a[1]))); break;
-//        case 4: _t->showDataChange((*reinterpret_cast< QModelIndex(*)>(_a[1])),(*reinterpret_cast< QModelIndex(*)>(_a[2]))); break;
+        case 4: _t->changUsername((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->on_actionAdd_A_triggered(); break;
         case 6: _t->on_actionDelete_D_triggered(); break;
         case 7: _t->on_actionFind_F_triggered(); break;
@@ -143,9 +140,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->on_actionRelationship_triggered(); break;
         case 11: _t->on_actionBirthday_triggered(); break;
         case 12: _t->on_actionBirthday_B_2_triggered(); break;
-        case 13: _t->on_actionBirthdayEmail_E_triggered(); break;
-        case 14: _t->on_actionEdit_E_triggered(); break;
-        case 15: _t->on_actionHome_H_triggered(); break;
+        case 13: _t->on_actionEdit_E_triggered(); break;
+        case 14: _t->on_actionHome_H_triggered(); break;
+        case 15: _t->on_actionChange_Username_triggered(); break;
         default: ;
         }
     }

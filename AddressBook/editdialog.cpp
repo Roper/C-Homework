@@ -2,7 +2,6 @@
 #include "editdialog.h"
 #include "mainwindow.h"
 #include "ui_editdialog.h"
-#include "birthdayemaildialog.h"
 #include <QDate>
 #include <qDebug>
 #include <string>
@@ -10,15 +9,17 @@
 #include <QSqlError>
 
 EditDialog::EditDialog(QWidget *parent = 0, int id = 0, QString name = "", int year = 0, int month = 0, int day = 0,
-                       QString relation = "", QString tel = "", QString emailAddr = "", QString special = "") :
+                       QString relation = "", QString tel = "", QString emailAddr = "", QString special = "", QString userName="") :
     QDialog(parent),
     ui(new Ui::EditDialog)
 {
     ui->setupUi(this);
 
     this->setFixedSize(this->width(), this->height());
+    this->setWindowTitle("Edit");
 
     EditDialog::id = id;
+    EditDialog::username = userName;
     ui->nameLineEdit->setEnabled(false);
     ui->birthdayLineEdit->setEnabled(false);
     ui->nameLineEdit->setText(name);
@@ -84,5 +85,5 @@ void EditDialog::on_birthdayCardPushButton_clicked()
     QString name = ui->nameLineEdit->text();
     ui->birthdayEmailTextBrowser->setText(QString("%1:\n"
                              "\t祝生日快乐，健康幸福。\n"
-                             "\t\t\tName").arg(name));
+                             "\t\t\t%2").arg(name).arg(username));
 }

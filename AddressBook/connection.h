@@ -17,13 +17,11 @@ static bool checkConnection()
         return 0;
 
     QSqlQuery query;
-    if(query.exec("create table people(id int, name varchar(20), year int, month int, day int,"
+    query.exec("create table people(id int, name varchar(20), year int, month int, day int,"
                "relation varchar(20), tel varchar(20),"
-               "emailAddr varchar(100), special varchar(200), primary key (id))"))
-    {
-        query.exec("create table status(id int, count int, showSpecial int, lastQuery varchar(200), primary key(id))");
-        query.exec("insert into status values(0, 0, -1, 'select * from people')");
-    }
+               "emailAddr varchar(100), special varchar(200), primary key (id))");
+    if(query.exec("create table status(id int, count int, showSpecial int, lastQuery varchar(200), username varchar(100), primary key(id))"))
+        query.exec("insert into status values(0, 0, -1, 'select * from people', '匿名')");
 
     return 1;
 }

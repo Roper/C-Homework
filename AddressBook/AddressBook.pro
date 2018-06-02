@@ -30,8 +30,8 @@ SOURCES += main.cpp\
     finddialog.cpp \
     listbyrelationdialog.cpp \
     listbybirthdaydialog.cpp \
-    birthdayemaildialog.cpp \
-    editdialog.cpp
+    editdialog.cpp \
+    usernameinputdialog.cpp
 
 HEADERS  += mainwindow.h \
     connection.h \
@@ -40,8 +40,8 @@ HEADERS  += mainwindow.h \
     finddialog.h \
     listbyrelationdialog.h \
     listbybirthdaydialog.h \
-    birthdayemaildialog.h \
-    editdialog.h
+    editdialog.h \
+    usernameinputdialog.h
 
 FORMS    += mainwindow.ui \
     addpeopledialog.ui \
@@ -49,6 +49,7 @@ FORMS    += mainwindow.ui \
     listbyrelationdialog.ui \
     listbybirthdaydialog.ui \
     birthdayemaildialog.ui \
-    editdialog.ui
+    editdialog.ui \
+    usernameinputdialog.ui
 
 QT += sql
