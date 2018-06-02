@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="birthdayEmailTextBrowser">
    <property name="geometry">
     <rect>
      <x>30</x>

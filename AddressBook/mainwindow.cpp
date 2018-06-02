@@ -1,17 +1,18 @@
+#include "people.h"
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include "connection.h"
-#include "addpeopledialog.h"
-#include "listbyrelationdialog.h"
-#include "listbybirthdaydialog.h"
-#include "birthdayemaildialog.h"
 #include "finddialog.h"
 #include "editdialog.h"
-#include <QMessageBox>
+#include "ui_mainwindow.h"
+#include "addpeopledialog.h"
+#include "birthdayemaildialog.h"
+#include "listbyrelationdialog.h"
+#include "listbybirthdaydialog.h"
 #include <cstdlib>
-#include <QSqlTableModel>
 #include <QDialog>
 #include <QDateTime>
+#include <QMessageBox>
+#include <QSqlTableModel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->resizeColumnsToContents();
     ui->tableView->setColumnHidden(8, true);
+    ui->tableView->setColumnHidden(7, true);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 }
 
@@ -51,6 +53,8 @@ void MainWindow::fresh()
     model->setQuery(queryString);
 
     ui->tableView->setModel(model);
+    if(!ui->tableView->isColumnHidden(7))
+        ui->tableView->setColumnHidden(7, true);
 }
 
 void MainWindow::queryWithCondition(QString condition)
@@ -67,6 +71,9 @@ void MainWindow::findByName(QString name)
 void MainWindow::findByRelation(QString relation)
 {
     queryWithCondition(QString("where relation = '%1'").arg(relation));
+    if(ui->tableView->isColumnHidden(7))
+        ui->tableView->setColumnHidden(7, false);
+    model->setHeaderData(7, Qt::Horizontal, People::indexToSpecial(People::relationToIndex(relation)));
 }
 
 void MainWindow::findByMonth(int month)
@@ -136,7 +143,7 @@ void MainWindow::on_actionBirthday_B_2_triggered()
     int year5 = later.year();
     int tmp5 = year5 * 10000 + month5 * 100 + day5;
 
-    queryWithCondition(QString("where sortAnchor >= %1 and sortAnchor <= %2").arg(tmp).arg(tmp5));
+    queryWithCondition(QString("where year*10000+month*100+day >= %1 and year*10000+month*100+day <= %2").arg(tmp).arg(tmp5));
 }
 
 void MainWindow::on_actionBirthdayEmail_E_triggered()

@@ -1,13 +1,18 @@
+#include "people.h"
 #include "mainwindow.h"
 #include "addpeopledialog.h"
-#include "people.h"
 #include <QApplication>
+
+void init()
+{
+    People::Initi();
+}
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    People::Initi();
+    init();
     MainWindow w;
     w.show();
 

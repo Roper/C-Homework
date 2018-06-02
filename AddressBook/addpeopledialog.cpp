@@ -1,7 +1,7 @@
+#include "people.h"
+#include "connection.h"
 #include "addpeopledialog.h"
 #include "ui_addpeopledialog.h"
-#include "connection.h"
-#include "people.h"
 #include <QDialog>
 #include <QMessageBox>
 
@@ -26,9 +26,6 @@ void AddPeopleDialog::on_okPushButton_clicked()
         QMessageBox::warning(this, "WARNING", "性名不能为空", QMessageBox::Yes);
     else
     {
-        int year = ui->birthdayDateEdit->date().year();
-        int month = ui->birthdayDateEdit->date().month();
-        int day = ui->birthdayDateEdit->date().day();
         insertToDb(ui->nameEdit->text().trimmed(),
                    ui->birthdayDateEdit->date().year(),
                    ui->birthdayDateEdit->date().month(),
@@ -43,20 +40,7 @@ void AddPeopleDialog::on_okPushButton_clicked()
 
 void AddPeopleDialog::on_relationBox_currentIndexChanged(int index)
 {
-    switch(index)
-    {
-        case 0:
-            ui->changableLabel->setText("学校");
-            break;
-        case 1:
-            ui->changableLabel->setText("认识地");
-            break;
-        case 2:
-            ui->changableLabel->setText("单位");
-            break;
-        case 3:
-            ui->changableLabel->setText("称呼");
-    }
+    ui->changableLabel->setText(People::indexToSpecial(index));
 }
 
 void AddPeopleDialog::on_cancelPushButton_clicked()

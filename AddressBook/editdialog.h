@@ -25,6 +25,8 @@ private slots:
 
     void on_okPushButton_clicked();
 
+    void on_birthdayCardPushButton_clicked();
+
 private:
     Ui::EditDialog *ui;
 };

@@ -20,7 +20,6 @@ static bool checkConnection()
     query.exec("create table people(name varchar(20), year int, month int, day int,"
                "relation varchar(20), tel varchar(20),"
                "emailAddr varchar(100), special varchar(200), primary key (name))");
-    qDebug() << query.lastError();
     return 1;
 }
 

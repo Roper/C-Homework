@@ -27,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_EditDialog
 {
 public:
-    QTextBrowser *textBrowser;
+    QTextBrowser *birthdayEmailTextBrowser;
     QPushButton *birthdayCardPushButton;
     QSplitter *splitter_7;
     QPushButton *okPushButton;
@@ -56,9 +56,9 @@ public:
         if (EditDialog->objectName().isEmpty())
             EditDialog->setObjectName(QStringLiteral("EditDialog"));
         EditDialog->resize(417, 438);
-        textBrowser = new QTextBrowser(EditDialog);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(30, 270, 351, 121));
+        birthdayEmailTextBrowser = new QTextBrowser(EditDialog);
+        birthdayEmailTextBrowser->setObjectName(QStringLiteral("birthdayEmailTextBrowser"));
+        birthdayEmailTextBrowser->setGeometry(QRect(30, 270, 351, 121));
         birthdayCardPushButton = new QPushButton(EditDialog);
         birthdayCardPushButton->setObjectName(QStringLiteral("birthdayCardPushButton"));
         birthdayCardPushButton->setGeometry(QRect(30, 220, 121, 23));

@@ -2,6 +2,7 @@
 #include "editdialog.h"
 #include "mainwindow.h"
 #include "ui_editdialog.h"
+#include "birthdayemaildialog.h"
 #include <QDate>
 #include <qDebug>
 #include <string>
@@ -75,6 +76,13 @@ void EditDialog::on_okPushButton_clicked()
     query->bindValue(4, name);
     query->exec();
 
-    qDebug() << query->lastError();
     accept();
+}
+
+void EditDialog::on_birthdayCardPushButton_clicked()
+{
+    QString name = ui->nameLineEdit->text();
+    ui->birthdayEmailTextBrowser->setText(QString("%1:\n"
+                             "\t祝生日快乐，健康幸福。\n"
+                             "\t\t\tName").arg(name));
 }

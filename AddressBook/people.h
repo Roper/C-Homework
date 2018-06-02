@@ -10,6 +10,8 @@ public:
 public:
     People();
     static void Initi();
+    static QString indexToSpecial(int index);
+    static int relationToIndex(QString relation);
 };
 
 #endif // PEOPLE_H
