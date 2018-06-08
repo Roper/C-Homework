@@ -169,16 +169,24 @@ void MainWindow::on_actionBirthday_B_2_triggered()
     QDate current = QDate::currentDate();
     int day = current.day();
     int month = current.month();
-    int year = current.year();
-    int tmp = year * 10000 + month * 100 + day;
+    int tmp = month * 100 + day;
 
     QDate later = QDate::currentDate().addDays(5);
     int day5 = later.day();
     int month5 = later.month();
-    int year5 = later.year();
-    int tmp5 = year5 * 10000 + month5 * 100 + day5;
+    int tmp5 = month5 * 100 + day5;
 
-    queryWithCondition(QString("where year*10000+month*100+day >= %1 and year*10000+month*100+day <= %2").arg(tmp).arg(tmp5));
+    if(month == month5)
+        queryWithCondition(QString("where month*100+day >= %1 and month*100+day <= %2")
+                           .arg(tmp).arg(tmp5));
+    else
+    {
+        int lastDayInMonth = current.daysInMonth();
+        queryWithCondition(QString("where (month*100+day >= %1 and month*100+day <= %2)"
+                                   "or (month*100+day >= %3 and month*100+day <= %4)")
+                           .arg(tmp).arg(month*100+lastDayInMonth)
+                           .arg(month5*100+1).arg(tmp5));
+    }
 }
 
 void MainWindow::on_actionEdit_E_triggered()
