@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QModelIndex>
-#include <QSqlQueryModel>
+#include <QStandardItemModel>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +30,7 @@ private slots:
     void findByRelation(QString name);
     void findByMonth(int month);
     void changUsername(QString name);
+    void setQuery(QString);
 
     void on_actionAdd_A_triggered();
     void on_actionDelete_D_triggered();
@@ -45,7 +46,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QSqlQueryModel *model;
+    QStandardItemModel *model;
     QString queryString;
     QString userName;
     int count;

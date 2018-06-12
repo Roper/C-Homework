@@ -36,7 +36,6 @@ MainWindow::MainWindow(QWidget *parent) :
     queryString = query->value(3).toString();
     userName = query->value(4).toString();
 
-    model = new QSqlQueryModel;
     this->fresh();
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -52,9 +51,37 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::setQuery(QString queryString)
+{
+    QSqlQuery *query = new QSqlQuery;
+    query->exec(queryString);
+    model = new QStandardItemModel;
+
+    while(query->next())
+    {
+        QList<QStandardItem*> newRow;
+        for(int i = 0; i < 9; i ++)
+        {
+            QStandardItem *newColumn = new QStandardItem;
+            newColumn->setText(query->value(i).toString());
+            newRow.append(newColumn);
+        }
+        model->appendRow(newRow);
+    }
+}
+
 void MainWindow::fresh()
 {
-    model->setQuery(queryString);
+    setQuery(queryString);
+    if(model->columnCount() < 7)
+        model->setColumnCount(7);
+    model->setHeaderData(1, Qt::Horizontal, "名字");
+    model->setHeaderData(2, Qt::Horizontal, "出生年份");
+    model->setHeaderData(3, Qt::Horizontal, "出生月份");
+    model->setHeaderData(4, Qt::Horizontal, "出生日");
+    model->setHeaderData(5, Qt::Horizontal, "关系");
+    model->setHeaderData(6, Qt::Horizontal, "手机号码");
+    model->setHeaderData(7, Qt::Horizontal, "邮箱地址");
 
     ui->tableView->setModel(model);
     if(showSpecial != -1)
@@ -186,6 +213,41 @@ void MainWindow::on_actionBirthday_B_2_triggered()
                                    "or (month*100+day >= %3 and month*100+day <= %4)")
                            .arg(tmp).arg(month*100+lastDayInMonth)
                            .arg(month5*100+1).arg(tmp5));
+    }
+    model->insertColumn(5);
+    model->setHeaderData(5, Qt::Horizontal, "星期");
+    int rows = model->rowCount();
+    for(int i = 0; i < rows; i ++)
+    {
+        int y = QDate::currentDate().year();
+        int m = model->index(i, 3).data().toInt();
+        int d = model->index(i, 4).data().toInt();
+        QModelIndex idx = model->index(i, 5);
+        QDate *dat = new QDate(y, m, d);
+        switch(dat->dayOfWeek())
+        {
+            case 1:
+                model->setData(idx, "星期一");
+                break;
+            case 2:
+                model->setData(idx, "星期二");
+                break;
+            case 3:
+                model->setData(idx, "星期三");
+                break;
+            case 4:
+                model->setData(idx, "星期四");
+                break;
+            case 5:
+                model->setData(idx, "星期五");
+                break;
+            case 6:
+                model->setData(idx, "星期六");
+                break;
+            case 7:
+                model->setData(idx, "星期日");
+                break;
+        }
     }
 }
 

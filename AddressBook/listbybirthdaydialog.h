@@ -20,7 +20,6 @@ signals:
 
 private slots:
     void on_canclePushButton_clicked();
-
     void on_okPushButton_clicked();
 
 private:
