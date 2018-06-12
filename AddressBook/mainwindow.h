@@ -14,8 +14,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    // 构造函数
     explicit MainWindow(QWidget *parent = 0);
+    // 析构函数
     ~MainWindow();
+    // 按照条件
     void queryWithCondition(QString condition);
 
 protected:
@@ -38,7 +41,6 @@ private slots:
     void on_actionBirthday_B_2_triggered();
     void on_actionEdit_E_triggered();
     void on_actionHome_H_triggered();
-
     void on_actionChange_Username_triggered();
 
 private:
